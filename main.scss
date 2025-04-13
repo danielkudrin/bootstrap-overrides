@@ -1,0 +1,38 @@
+// 1. Import your custom variables FIRST
+@import "custom_variables";
+
+// 2. Import necessary Bootstrap functions and variables (optional but good practice)
+@import "path/to/node_modules/bootstrap/scss/functions";
+@import "path/to/node_modules/bootstrap/scss/variables";
+@import "path/to/node_modules/bootstrap/scss/variables-dark"; // If using dark mode
+@import "path/to/node_modules/bootstrap/scss/maps";
+@import "path/to/node_modules/bootstrap/scss/mixins";
+@import "path/to/node_modules/bootstrap/scss/utilities"; // Import utilities if you modify them based on your vars
+
+// 3. Import the rest of Bootstrap (or specific components)
+@import "path/to/node_modules/bootstrap/scss/root";
+@import "path/to/node_modules/bootstrap/scss/reboot";
+@import "path/to/node_modules/bootstrap/scss/type";
+// ... import other components ...
+@import "path/to/node_modules/bootstrap/scss/containers";
+@import "path/to/node_modules/bootstrap/scss/grid";
+@import "path/to/node_modules/bootstrap/scss/buttons";
+@import "path/to/node_modules/bootstrap/scss/card";
+@import "path/to/node_modules/bootstrap/scss/nav";
+@import "path/to/node_modules/bootstrap/scss/navbar";
+@import "path/to/node_modules/bootstrap/scss/pagination";
+@import "path/to/node_modules/bootstrap/scss/badge";
+@import "path/to/node_modules/bootstrap/scss/alert";
+@import "path/to/node_modules/bootstrap/scss/progress";
+@import "path/to/node_modules/bootstrap/scss/list-group";
+@import "path/to/node_modules/bootstrap/scss/close";
+@import "path/to/node_modules/bootstrap/scss/modal";
+@import "path/to/node_modules/bootstrap/scss/dropdown";
+@import "path/to/node_modules/bootstrap/scss/forms"; // Import related form components
+@import "path/to/node_modules/bootstrap/scss/helpers";
+// API utilities last
+@import "path/to/node_modules/bootstrap/scss/utilities/api";
+
+
+// 4. Import your custom style overrides LAST
+@import "custom_styles";

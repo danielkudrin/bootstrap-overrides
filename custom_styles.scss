@@ -1,0 +1,235 @@
+/**
+ * Direct Style Overrides - "Indigo Modern" Vision v2
+ * Load this AFTER bootstrap has been processed.
+ */
+
+body {
+    font-family: $font-family-sans-serif; // Can use variables defined earlier
+    // font-size is handled by $font-size-base
+    // background-color is handled by $body-bg
+    // color is handled by $body-color
+    font-feature-settings: 'salt';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+}
+
+/* --- Specific Heading Styles --- */
+// Use !important carefully, only if necessary to override Bootstrap defaults
+h1, .h1 { font-weight: 900 !important; letter-spacing: 0.01em !important; }
+h2, .h2 { font-weight: 700 !important; letter-spacing: 0.01em !important; }
+h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-weight: 600 !important; letter-spacing: 0.01em !important; }
+
+/* --- Card Styling --- */
+.card {
+    transition: box-shadow 0.2s ease-in-out;
+    // Base shadow set by $card-box-shadow variable already
+}
+.card:hover {
+    box-shadow: $box-shadow-lg; // Apply larger shadow on hover
+}
+// Card radius is set by $card-border-radius
+.card-header {
+    // Top radius controlled by $card-border-radius now
+    border-bottom: $border-width solid $border-color;
+}
+.card-footer {
+    // Bottom radius controlled by $card-border-radius now
+    border-top: $border-width solid $border-color;
+}
+
+/* --- Button Styling --- */
+.btn {
+    font-weight: 500; // Override Bootstrap's default (usually $btn-font-weight)
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    letter-spacing: 0.01em;
+    // border-radius set by $btn-border-radius (default $border-radius)
+}
+// Specific btn background/border/color hover/active states are handled by variables like $btn-primary-hover-bg etc.
+
+/* --- Forms --- */
+.form-control, .form-select {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    // Base background set by $input-bg
+}
+.form-control:focus, .form-select:focus {
+    // Focus state controlled by variables: $input-focus-border-color, $input-focus-box-shadow, $focus-ring-*
+    // The following overrides might be needed if variables don't provide exact control:
+    box-shadow: $input-box-shadow, 0 0 0 $focus-ring-width $focus-ring-color !important; // Combine custom 'none' shadow with focus ring
+    border-color: $primary !important; // Use $primary, same as $input-focus-border-color default mapping
+}
+
+/* --- Remove focus shadow from check/radio/switch --- */
+.form-check-input:focus {
+    border-color: $primary; // Optional: Consistent border color on focus
+    outline: 0;
+    box-shadow: none !important; // Direct override to remove default focus shadow
+}
+
+/* --- Navbar --- */
+// Navbar box-shadow needs direct application
+.navbar {
+    box-shadow: $box-shadow; // Apply the base box-shadow
+}
+.nav-link {
+    transition: color 0.2s ease;
+    font-weight: 500; // Override default nav-link weight
+}
+.nav-link.active {
+    font-weight: 600; // Override default active nav-link weight
+}
+
+/* --- Table --- */
+.table {
+    & > thead > tr > th { // More specific selector than just thead th
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        color: $secondary; // Use variable --tblr-secondary
+        background-color: $card-cap-bg; // Use variable --tblr-card-cap-bg
+    }
+}
+// table-hover color is handled by variable $table-hover-bg
+
+/* --- List Group --- */
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+.list-group-item.active {
+    font-weight: 500; // Override default active item weight
+    // z-index handled by bootstrap
+}
+
+/* --- Dropdown --- */
+.dropdown-item {
+    border-radius: $border-radius-sm; // Override default dropdown item radius
+    transition: all 0.2s ease;
+    margin: 0.125rem 0; // Add vertical margin
+}
+.dropdown-item.active, .dropdown-item:active {
+    font-weight: 500; // Override default active dropdown item weight
+}
+
+/* --- Badge --- */
+.badge {
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+// Specific badge text colors forcing white/black - Use !important if necessary
+// Bootstrap's contrast function might handle this, but overrides match original CSS intent.
+.badge.bg-primary, .badge.bg-secondary, .badge.bg-success, .badge.bg-danger, .badge.bg-info, .badge.bg-dark {
+    color: $white !important; // Use $white for consistency
+}
+.badge.bg-warning {
+    color: $black !important; // Use $black for consistency
+}
+.badge.bg-light {
+    color: $dark !important; // Use $dark for consistency (--tblr-light-fg maps to dark)
+}
+
+/* --- Alerts (Solid Backgrounds) --- */
+// Alert radius set by $alert-border-radius (default $border-radius)
+.alert {
+    border: none; // Override Bootstrap default border
+    box-shadow: $box-shadow; // Add shadow
+    // border-radius: $alert-border-radius; // Set via variable ($border-radius)
+}
+
+// Override default Bootstrap alert styles for solid backgrounds
+// (Bootstrap usually uses `*-bg-subtle` and `*-border-subtle`)
+@each $color, $value in $theme-colors {
+    .alert-#{$color} {
+        // Use the main theme color for background and border
+        background-color: $value;
+        border-color: $value; // Setting border color even if border:none for potential future use
+        // Determine text color based on contrast - $*-text-emphasis variables were set earlier
+        color: color-contrast($value);
+
+        hr {
+            border-top-color: mix(color-contrast($value), $value, 70%); // Slightly transparent version of text color
+        }
+        .alert-link, .alert-action { // Include custom .alert-action class
+            color: color-contrast($value);
+            font-weight: $font-weight-bold; // Use bold var
+        }
+        .btn-close {
+            // Adjust close button based on background contrast
+            @if (color-contrast($value) == $white) {
+                filter: invert(1) grayscale(100%) brightness(200%);
+            } @else {
+                // Default filter for light backgrounds if needed
+            }
+        }
+    }
+}
+// Handle warning/light specifically if contrast function isn't enough
+.alert-warning {
+    color: $warning-text-emphasis; // Use defined emphasis color (#000)
+    hr { border-top-color: rgba(0,0,0,0.2); }
+    .alert-link, .alert-action { color: $warning-text-emphasis; }
+}
+.alert-light {
+    color: $light-text-emphasis; // Use defined emphasis color (#0f172a)
+     hr { border-top-color: rgba(0,0,0,0.2); }
+    .alert-link, .alert-action { color: $light-text-emphasis; }
+}
+
+
+/* --- Custom Scrollbar --- */
+@media only screen and (min-width: 960px) {
+    *::-webkit-scrollbar { width: 8px; height: 8px; background-color: rgba(0, 0, 0, 0); }
+    *::-webkit-scrollbar:hover { background-color: rgba(0, 0, 0, 0.06); }
+    *::-webkit-scrollbar-thumb { border: 2px solid transparent; border-radius: 20px; box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.24); background-clip: content-box; }
+    *::-webkit-scrollbar-thumb:active { box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.37); background-clip: content-box; }
+}
+
+/* --- Modal --- */
+.modal.fade .modal-dialog {
+    transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1); // Override default BS transition timing
+}
+
+/* --- Blockquote --- */
+blockquote {
+    border-left: 4px solid $primary;
+    padding: 1rem 0 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    background-color: $primary-bg-subtle; // Use subtle primary bg
+    border-radius: 0 $border-radius $border-radius 0; // Use default radius
+}
+
+/* --- HR --- */
+hr {
+    margin: 2rem 0; // Override default margin
+    opacity: 0.1;   // Override default opacity
+    border-top: $border-width solid $body-color; // Use variables
+}
+
+/* --- Pagination --- */
+.page-item:not(:first-child) .page-link {
+    margin-left: 0.125rem; // Add small gap
+}
+.page-item:not(:last-child) .page-link {
+    margin-right: 0.125rem; // Add small gap
+}
+.page-link {
+    transition: all 0.2s ease;
+}
+// .page-item.active .page-link z-index handled by Bootstrap
+// .page-link:focus z-index and shadow handled by Bootstrap focus variables/mixins
+
+/* --- Progress Bar --- */
+// $progress-border-radius handles rounding
+.progress {
+    overflow: hidden; // Ensure inner bar respects radius
+}
+
+/* --- Demo Utils --- (Keep if needed) */
+.color-swatch { display: inline-block; width: 2rem; height: 2rem; border-radius: $border-radius-sm; margin-right: 0.5rem; vertical-align: middle; border: 1px solid rgba(0,0,0,0.1); }
+.radius-demo { background-color: $primary-bg-subtle; border: 1px dashed $primary; padding: 1rem; margin-bottom: 0.5rem; text-align: center; }
+.shadow-demo { background-color: #fff; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: $border-radius; }
+// .accordion-button styling seems unnecessary if default BS is used
+
+// --- End of Direct Overrides ---

@@ -1,0 +1,231 @@
+/**
+ * Bootstrap 5 Variable Overrides - "Indigo Modern" Vision v2 (Based on Tabler Theme)
+ * Import this file BEFORE importing bootstrap's main scss file.
+ */
+
+// --- Typography ---
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "Cascadia Code", "Fira Code", "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+$font-size-base: 0.875rem; // --tblr-body-font-size
+$font-weight-base: 400;     // --tblr-body-font-weight
+$line-height-base: 1.5;     // --tblr-body-line-height
+$font-weight-bold: 600;     // --tblr-font-weight-bold (Affects .fw-bold primarily)
+// Note: Specific heading weights are handled by direct overrides later
+
+// --- Color Palette ---
+$primary:       #4f46e5; // --tblr-primary
+$secondary:     #1e293b; // --tblr-secondary
+$success:       #10b981; // --tblr-success
+$info:          #0ea5e9; // --tblr-info
+$warning:       #f59e0b; // --tblr-warning
+$danger:        #dc2626; // --tblr-danger
+$light:         #f1f5f9; // --tblr-light
+$dark:          #0f172a; // --tblr-dark
+
+// --- RGB Values (Bootstrap often derives these, but can be set) ---
+// $primary-rgb:     79, 70, 229; // --tblr-primary-rgb
+// $secondary-rgb:   30, 41, 59;  // --tblr-secondary-rgb
+// etc.... (Usually not needed unless you have specific rgba() usage elsewhere)
+
+// --- Text Emphasis / Foreground Colors on Backgrounds ---
+// Bootstrap uses color contrast functions. These map roughly to `*-fg` vars.
+// Use if Bootstrap's auto-contrast isn't sufficient.
+$primary-text-emphasis:   #ffffff; // --tblr-primary-fg
+$secondary-text-emphasis: #ffffff; // --tblr-secondary-fg
+$success-text-emphasis:   #ffffff; // --tblr-success-fg
+$info-text-emphasis:      #ffffff; // --tblr-info-fg
+$warning-text-emphasis:   #000000; // --tblr-warning-fg
+$danger-text-emphasis:    #ffffff; // --tblr-danger-fg
+$light-text-emphasis:     #0f172a; // --tblr-light-fg
+$dark-text-emphasis:      #ffffff; // --tblr-dark-fg
+
+// --- Background Subtle Colors (Used for alerts, list groups etc by default) ---
+$primary-bg-subtle:   rgba(79, 70, 229, 0.1);  // --tblr-primary-lt
+$secondary-bg-subtle: rgba(30, 41, 59, 0.1);   // --tblr-secondary-lt
+$success-bg-subtle:   rgba(16, 185, 129, 0.1); // --tblr-success-lt
+$info-bg-subtle:      rgba(14, 165, 233, 0.1); // --tblr-info-lt
+$warning-bg-subtle:   rgba(245, 158, 11, 0.1);  // --tblr-warning-lt
+$danger-bg-subtle:    rgba(220, 38, 38, 0.1);   // --tblr-danger-lt
+$light-bg-subtle:     #ffffff;                  // --tblr-light-lt (This is unusual, typically a tint of light)
+$dark-bg-subtle:      rgba(15, 23, 42, 0.1);    // --tblr-dark-lt
+
+// --- Muted Color ---
+// BS5 uses body-secondary/tertiary more prominently
+$text-muted: #64748b; // --tblr-muted (approximate mapping)
+$body-secondary-color: #64748b; // --tblr-muted (more specific to BS5 usage)
+$body-tertiary-color: mix($body-secondary-color, $light, 50%); // Example derivation
+
+// --- Body & Surfaces ---
+$body-bg: #f1f5f9;    // --tblr-body-bg
+$body-color: #1e293b; // --tblr-body-color
+$headings-color: $body-color; // --tblr-heading-color (Can be set explicitly if different)
+
+// Surface Vars - Map to specific component BGs or general grays if needed
+// $white: #ffffff; // --tblr-bg-surface (Bootstrap default)
+$body-secondary-bg: #f8fafc; // --tblr-bg-surface-secondary (Often maps to $gray-100 or $light)
+$body-tertiary-bg: $light;   // --tblr-bg-surface-tertiary (Often maps to $gray-200 or $light)
+$input-bg: #ffffff;          // --tblr-bg-forms (Maps to --tblr-bg-surface)
+
+// --- Borders & Radius ---
+$border-width: 1px;        // --tblr-border-width
+$border-color: #e2e8f0;    // --tblr-border-color
+$border-color-translucent: rgba(0, 0, 0, 0.08); // --tblr-border-color-translucent
+
+$border-radius:   0.375rem; // --tblr-border-radius
+$border-radius-sm: 0.25rem;  // --tblr-border-radius-sm
+$border-radius-lg: 0.5rem;   // --tblr-border-radius-lg
+$border-radius-xl: 0.75rem;  // --tblr-border-radius-xl
+$border-radius-xxl: 1rem;    // --tblr-border-radius-xxl
+$border-radius-pill: 9999px; // --tblr-border-radius-pill
+
+// --- Shadows ---
+$box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);                     // --tblr-box-shadow-sm
+$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); // --tblr-box-shadow
+$box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); // --tblr-box-shadow-lg
+$box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);            // --tblr-box-shadow-inset
+$enable-shadows: true; // Ensure shadows are generally enabled
+
+// --- Focus Ring ---
+$focus-ring-width: 0.25rem;     // --tblr-focus-ring-width
+$focus-ring-opacity: 0.25;      // --tblr-focus-ring-opacity
+$focus-ring-color: rgba(var(--bs-primary-rgb), $focus-ring-opacity); // --tblr-focus-ring-color
+
+// --- Component Defaults ---
+$link-color: $primary; // --tblr-link-color
+$link-hover-color: color-mix(in srgb, $primary 80%, black); // --tblr-link-hover-color (Converted color-mix)
+$link-decoration: none;       // --tblr-link-decoration
+$link-hover-decoration: underline; // --tblr-link-hover-decoration
+
+$table-striped-bg: rgba(0, 0, 0, 0.02); // --tblr-table-striped-bg
+$table-hover-bg: rgba(var(--bs-primary-rgb), 0.05); // --tblr-table-hover-bg
+$table-border-color: $border-color;   // --tblr-table-border-color
+
+$badge-font-weight: 600;     // --tblr-badge-font-weight
+$badge-padding-x: 0.65em;    // --tblr-badge-padding-x
+$badge-padding-y: 0.35em;    // --tblr-badge-padding-y
+$badge-border-radius: $border-radius; // --tblr-badge-border-radius
+
+$component-active-bg: rgba(var(--bs-primary-rgb), 0.08); // --tblr-active-bg (Approximate mapping)
+$component-active-color: $primary;
+
+// Disabled state often uses specific component variables
+$form-select-disabled-color: #94a3b8; // --tblr-disabled-color
+$form-select-disabled-bg: $body-secondary-bg; // --tblr-disabled-bg
+// Add other disabled vars as needed ($btn-disabled-*, $pagination-disabled-*, etc.)
+
+$card-border-width: 0;             // --tblr-card-border-width
+$card-border-radius: $border-radius-xxl; // --tblr-card-border-radius
+$card-box-shadow: $box-shadow;     // --tblr-card-box-shadow (using mapped $box-shadow)
+$card-bg: #ffffff;                 // --tblr-card-bg (using mapped --tblr-bg-surface)
+$card-cap-bg: rgba(0, 0, 0, 0.02); // --tblr-card-cap-bg
+$card-cap-padding-y: 1rem;         // --tblr-card-cap-padding-y
+$card-cap-padding-x: 1.25rem;      // --tblr-card-cap-padding-x
+$card-spacer-y: 1rem;              // --tblr-card-spacer-y
+$card-spacer-x: 1.25rem;           // --tblr-card-spacer-x
+
+$modal-content-border-width: 0;               // --tblr-modal-border-width
+$modal-content-border-radius: $border-radius-xxl; // --tblr-modal-border-radius
+$modal-content-bg: #ffffff;                   // --tblr-modal-bg (using mapped --tblr-bg-surface)
+$modal-header-border-color: $border-color;    // --tblr-modal-header-border-color
+$modal-footer-bg: rgba(0, 0, 0, 0.02);        // --tblr-modal-footer-bg (using mapped --tblr-card-cap-bg)
+$modal-footer-border-color: $border-color;    // --tblr-modal-footer-border-color
+$modal-content-box-shadow-xs: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); // --tblr-modal-box-shadow
+
+$list-group-bg: #ffffff;                   // --tblr-list-group-bg (using mapped --tblr-bg-surface)
+$list-group-border-color: $border-color;    // --tblr-list-group-border-color
+$list-group-action-hover-bg: rgba(var(--bs-primary-rgb), 0.04); // --tblr-list-group-action-hover-bg
+$list-group-active-bg: rgba(var(--bs-primary-rgb), 0.1);  // --tblr-list-group-active-bg
+$list-group-active-color: $primary;       // --tblr-list-group-active-color
+$list-group-active-border-color: rgba(var(--bs-primary-rgb), 0.2); // --tblr-list-group-active-border-color
+
+$dropdown-border-width: 0;             // --tblr-dropdown-border-width
+$dropdown-border-radius: $border-radius-lg; // --tblr-dropdown-border-radius
+$dropdown-box-shadow: $box-shadow-lg;  // --tblr-dropdown-box-shadow (using mapped $box-shadow-lg)
+$dropdown-bg: #ffffff;                 // --tblr-dropdown-bg (using mapped --tblr-bg-surface)
+$dropdown-padding-y: 0.5rem;           // --tblr-dropdown-padding-y
+$dropdown-link-hover-bg: rgba(var(--bs-primary-rgb), 0.08); // --tblr-dropdown-link-hover-bg
+$dropdown-link-hover-color: $primary;  // --tblr-dropdown-link-hover-color
+$dropdown-link-active-bg: rgba(var(--bs-primary-rgb), 0.12); // --tblr-dropdown-link-active-bg
+$dropdown-link-active-color: $primary; // --tblr-dropdown-link-active-color
+
+$nav-link-color: $secondary;             // --tblr-nav-link-color
+$nav-link-hover-color: $primary;         // --tblr-nav-link-hover-color
+// $nav-link-hover-bg: rgba(var(--bs-primary-rgb), 0.04); // --tblr-nav-link-hover-bg (Requires custom implementation or specific nav type vars)
+
+// Assuming light navbar variant by default based on original context
+$navbar-light-bg: #ffffff;               // --tblr-navbar-bg (using mapped --tblr-bg-surface)
+$navbar-light-border-color: $border-color;// --tblr-navbar-border-color
+// $navbar-box-shadow: $box-shadow; // --tblr-navbar-box-shadow (BS doesn't have this var by default, needs custom CSS)
+$navbar-light-color: $secondary;         // --tblr-navbar-color
+$navbar-light-hover-color: $primary;     // --tblr-navbar-hover-color
+$navbar-light-active-color: $primary;    // --tblr-navbar-active-color
+$navbar-light-brand-color: $body-color;  // --tblr-navbar-brand-color
+$navbar-light-brand-hover-color: $body-color; // --tblr-navbar-brand-hover-color
+
+$pagination-border-radius: $border-radius; // --tblr-pagination-border-radius
+$pagination-border-width: $border-width;   // --tblr-pagination-border-width
+$pagination-border-color: $border-color;   // --tblr-pagination-border-color
+$pagination-color: $primary;             // --tblr-pagination-color
+$pagination-bg: #ffffff;                 // --tblr-pagination-bg (using mapped --tblr-bg-surface)
+$pagination-hover-bg: rgba(var(--bs-primary-rgb), 0.08); // --tblr-pagination-hover-bg
+$pagination-hover-border-color: rgba(var(--bs-primary-rgb), 0.2); // --tblr-pagination-hover-border-color
+$pagination-active-color: $primary-text-emphasis; // --tblr-pagination-active-color (maps to primary-fg)
+$pagination-active-bg: $primary;             // --tblr-pagination-active-bg
+$pagination-active-border-color: $primary;             // --tblr-pagination-active-border-color
+$pagination-disabled-color: #94a3b8;          // --tblr-pagination-disabled-color (maps to disabled-color)
+$pagination-disabled-bg: #ffffff;          // --tblr-pagination-disabled-bg (maps to bg-surface)
+$pagination-disabled-border-color: $border-color;  // --tblr-pagination-disabled-border-color
+
+$progress-height: 0.5rem;      // --tblr-progress-height
+$progress-bg: rgba(var(--bs-primary-rgb), 0.1); // --tblr-progress-bg
+$progress-border-radius: $border-radius-pill; // --tblr-progress-border-radius
+$progress-bar-bg: $primary;    // --tblr-progress-bar-bg
+
+// --- Button Specific Hover/Active States (Mapped from --tblr-*-hover/darken) ---
+$btn-primary-hover-bg: color-mix(in srgb, $primary 92%, black); // --tblr-primary-hover
+$btn-primary-hover-border-color: $btn-primary-hover-bg;
+$btn-primary-active-bg: color-mix(in srgb, $primary 75%, black); // --tblr-primary-darken
+$btn-primary-active-border-color: $btn-primary-active-bg;
+
+$btn-secondary-hover-bg: color-mix(in srgb, $secondary 92%, white); // --tblr-secondary-hover
+$btn-secondary-hover-border-color: $btn-secondary-hover-bg;
+$btn-secondary-active-bg: color-mix(in srgb, $secondary 75%, white); // --tblr-secondary-darken
+$btn-secondary-active-border-color: $btn-secondary-active-bg;
+
+$btn-success-hover-bg: color-mix(in srgb, $success 92%, black); // --tblr-success-hover
+$btn-success-hover-border-color: $btn-success-hover-bg;
+$btn-success-active-bg: color-mix(in srgb, $success 75%, black); // --tblr-success-darken
+$btn-success-active-border-color: $btn-success-active-bg;
+
+$btn-danger-hover-bg: color-mix(in srgb, $danger 92%, black); // --tblr-danger-hover
+$btn-danger-hover-border-color: $btn-danger-hover-bg;
+$btn-danger-active-bg: color-mix(in srgb, $danger 75%, black); // --tblr-danger-darken
+$btn-danger-active-border-color: $btn-danger-active-bg;
+
+$btn-warning-hover-bg: color-mix(in srgb, $warning 92%, black); // --tblr-warning-hover
+$btn-warning-hover-border-color: $btn-warning-hover-bg;
+$btn-warning-active-bg: color-mix(in srgb, $warning 75%, black); // --tblr-warning-darken
+$btn-warning-active-border-color: $btn-warning-active-bg;
+
+$btn-info-hover-bg: color-mix(in srgb, $info 92%, black); // --tblr-info-hover
+$btn-info-hover-border-color: $btn-info-hover-bg;
+$btn-info-active-bg: color-mix(in srgb, $info 75%, black); // --tblr-info-darken
+$btn-info-active-border-color: $btn-info-active-bg;
+
+$btn-light-hover-bg: color-mix(in srgb, $light 92%, black); // --tblr-light-hover
+$btn-light-hover-border-color: $btn-light-hover-bg;
+$btn-light-active-bg: color-mix(in srgb, $light 75%, black); // --tblr-light-darken
+$btn-light-active-border-color: $btn-light-active-bg;
+
+$btn-dark-hover-bg: color-mix(in srgb, $dark 92%, white); // --tblr-dark-hover
+$btn-dark-hover-border-color: $btn-dark-hover-bg;
+$btn-dark-active-bg: color-mix(in srgb, $dark 75%, white); // --tblr-dark-darken
+$btn-dark-active-border-color: $btn-dark-active-bg;
+
+// Input shadow override requires direct CSS or specific variable if available
+$input-box-shadow: none; // --tblr-box-shadow-input
+
+// --- End of Variable Overrides ---
+
+// IMPORTANT: Import Bootstrap *after* these variables are defined
+// @import "path/to/bootstrap/scss/bootstrap";
